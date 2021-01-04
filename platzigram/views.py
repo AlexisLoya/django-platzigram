@@ -11,7 +11,7 @@ def hello_world(request):
         now=datetime.now().strftime('%b %dth, %Y - %H:%M hrs')
     ))
 
-def hi(request):
+def sorted_numbers(request):
     sorted_numbers = sorted(request.GET['numbers'].split(','))
     data = {
         'status': 'ok',
@@ -20,3 +20,10 @@ def hi(request):
 
     }
     return JsonResponse(data, safe=False)
+
+def say_hi(resquest, name, age):
+    if age <= 12:
+        message = 'Sorry {}, you aren\'t allowed here'.format(name)
+    else:
+        message = 'Hello {}! Welcome to Platzigram'.format(name)
+    return HttpResponse(message)
